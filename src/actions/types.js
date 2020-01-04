@@ -1,0 +1,6 @@
+const Types = {
+  SET_CALENDAR_MONTH: "SET_CALENDAR_MONTH",
+  SET_SELECTED_DATE: "SET_SELECTED_DATE"
+};
+
+export default Types;
