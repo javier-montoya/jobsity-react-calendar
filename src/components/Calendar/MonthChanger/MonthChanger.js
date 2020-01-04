@@ -5,7 +5,7 @@ import { Grid, Typography, Fab } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ChevronLeft from "@material-ui/icons/ChevronLeft";
 import ChevronRight from "@material-ui/icons/ChevronRight";
-import { setCalendarMonth } from "../../actions/datesActions";
+import { setCalendarMonth } from "../../../actions/datesActions";
 
 const MonthChanger = ({ classes }) => {
   const dispatch = useDispatch();

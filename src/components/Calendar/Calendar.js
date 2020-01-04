@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import { Paper, Grid } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
-import DayBar from "../DayBar";
-import CalendarCell from "../CalendarCell";
+import DayBar from "./DayBar";
+import MonthChanger from "./MonthChanger";
+import CalendarCell from "./CalendarCell";
 
 const Calendar = ({ classes }) => {
   const calendarMonth = useSelector(state => state.currentDates.calendarMonth);
@@ -47,10 +48,13 @@ const Calendar = ({ classes }) => {
   };
 
   return (
-    <Paper>
-      <DayBar />
-      {renderCells()}
-    </Paper>
+    <>
+      <MonthChanger />
+      <Paper>
+        <DayBar />
+        {renderCells()}
+      </Paper>
+    </>
   );
 };
 
