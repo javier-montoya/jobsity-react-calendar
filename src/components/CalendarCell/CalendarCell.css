@@ -1,0 +1,24 @@
+.cell {
+  position: relative;
+  height: 6.5em;
+  overflow: hidden;
+  cursor: pointer;
+  border-right: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
+}
+
+/* .number {
+  font-size: 82.5%;
+  line-height: 1;
+  top: 0.75em;
+  left: 0.75em;
+  font-weight: 700;
+} */
+
+.inCurrentMonth {
+  background: white;
+}
+
+.outCurrentMont {
+  background: #f2f2f2;
+}

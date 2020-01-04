@@ -1,12 +1,16 @@
 import React from "react";
-import "./App.css";
+import { ThemeProvider } from "@material-ui/core/styles";
 import CalendarView from "./CalendarView";
+import theme from "../themes";
+import "./App.css";
 
 function App() {
   return (
-    <div className="viewContainer">
-      <CalendarView />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="viewContainer body">
+        <CalendarView />
+      </div>
+    </ThemeProvider>
   );
 }
 

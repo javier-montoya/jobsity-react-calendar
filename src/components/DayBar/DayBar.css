@@ -1,0 +1,11 @@
+.day {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  color: white;
+  background-color: #2f74b5;
+  font-size: 90%;
+  font-weight: bold;
+  padding: 0.1em 0;
+  border-bottom: 1px solid lightgray;
+}

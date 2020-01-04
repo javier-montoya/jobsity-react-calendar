@@ -2,21 +2,10 @@ import React from "react";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography, Fab } from "@material-ui/core";
-import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
+import withStyles from "@material-ui/core/styles/withStyles";
 import ChevronLeft from "@material-ui/icons/ChevronLeft";
 import ChevronRight from "@material-ui/icons/ChevronRight";
 import { setCalendarMonth } from "../../actions/datesActions";
-
-const styles = () => ({
-  circleButton: {
-    maxWidth: 35,
-    maxHeight: 35,
-    minHeight: 35
-  },
-  botPadding: {
-    paddingBottom: 10
-  }
-});
 
 const MonthChanger = ({ classes }) => {
   const dispatch = useDispatch();
@@ -36,42 +25,51 @@ const MonthChanger = ({ classes }) => {
   };
 
   return (
-    <MuiThemeProvider>
-      <div className={classes.botPadding}>
-        <Grid container justify="center" alignItems="center">
-          <Grid
-            container
-            item
-            xs={6}
-            md={4}
-            lg={4}
-            justify="space-between"
-            alignItems="center"
+    <div className={classes.botPadding}>
+      <Grid container justify="center" alignItems="center">
+        <Grid
+          container
+          item
+          xs={6}
+          md={4}
+          lg={4}
+          justify="space-between"
+          alignItems="center"
+        >
+          <Fab
+            color="primary"
+            aria-label="left-month"
+            className={classes.circleButton}
+            onClick={prevMonth}
           >
-            <Fab
-              color="primary"
-              aria-label="left-month"
-              className={classes.circleButton}
-              onClick={prevMonth}
-            >
-              <ChevronLeft />
-            </Fab>
-            <Typography variant="h6">
-              {moment(calendarMonth).format("MMMM YYYY")}
-            </Typography>
-            <Fab
-              color="primary"
-              aria-label="left-month"
-              className={classes.circleButton}
-              onClick={nextMonth}
-            >
-              <ChevronRight />
-            </Fab>
-          </Grid>
+            <ChevronLeft />
+          </Fab>
+          <Typography variant="h6">
+            {moment(calendarMonth).format("MMMM YYYY")}
+          </Typography>
+          <Fab
+            color="primary"
+            aria-label="left-month"
+            className={classes.circleButton}
+            onClick={nextMonth}
+          >
+            <ChevronRight />
+          </Fab>
         </Grid>
-      </div>
-    </MuiThemeProvider>
+      </Grid>
+    </div>
   );
 };
+
+const styles = () => ({
+  circleButton: {
+    maxWidth: 35,
+    maxHeight: 35,
+    minHeight: 35
+  },
+  botPadding: {
+    paddingBottom: 28
+  }
+});
 
 export default withStyles(styles)(MonthChanger);

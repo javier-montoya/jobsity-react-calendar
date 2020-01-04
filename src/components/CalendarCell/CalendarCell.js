@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import "./CalendarCell.css";
 
 const CalendarCell = props => {
   const { dateString, inCurrentMonth } = props;
@@ -8,8 +9,7 @@ const CalendarCell = props => {
 
   return (
     <div
-      className={`column cell`}
-      key={dateString}
+      className={`full-width cell`}
       onClick={() => console.log("date clicked: ", dateString)}
     >
       <span className="number">{cellDate.format("D")}</span>

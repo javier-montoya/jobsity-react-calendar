@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import Paper from "@material-ui/core/Paper";
+import { Paper, Grid } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
 import DayBar from "../DayBar";
 import MonthChanger from "../MonthChanger";
 import CalendarCell from "../CalendarCell";
-import "./Calendar.css";
 
-const Calendar = () => {
+const Calendar = ({ classes }) => {
   const calendarMonth = useSelector(state => state.currentDates.calendarMonth);
 
   const renderCells = () => {
@@ -25,33 +25,43 @@ const Calendar = () => {
       for (let i = 0; i < 7; i++) {
         cells.push(
           <CalendarCell
+            key={day.format()}
             dateString={day.format()}
             inCurrentMonth={!day.isSame(monthStart, "month")}
           />
         );
         day.add(1, "days");
       }
+
       rows.push(
-        <div className="row" key={day}>
-          {" "}
-          {cells}{" "}
-        </div>
+        <Grid
+          key={`calendar_row_${rows.length}`}
+          className={classes.gridLine}
+          container
+        >
+          {cells}
+        </Grid>
       );
       cells = [];
     }
-    return <div className="body">{rows}</div>;
+    return rows;
   };
 
   return (
     <>
       <MonthChanger />
       <Paper>
-        <div className="calendar">
-          <DayBar />
-          <div>{renderCells()}</div>
-        </div>
+        <DayBar />
+        {renderCells()}
       </Paper>
     </>
   );
 };
-export default Calendar;
+
+const styles = () => ({
+  gridLine: {
+    borderLeft: "1px solid darkgray"
+  }
+});
+
+export default withStyles(styles)(Calendar);
