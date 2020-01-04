@@ -1,9 +1,24 @@
 import React from "react";
 import moment from "moment";
-import { setCalendarMonth } from "../../actions/datesActions";
 import { useSelector, useDispatch } from "react-redux";
+import { Grid, Typography, Fab } from "@material-ui/core";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
+import ChevronLeft from "@material-ui/icons/ChevronLeft";
+import ChevronRight from "@material-ui/icons/ChevronRight";
+import { setCalendarMonth } from "../../actions/datesActions";
 
-const MonthChanger = () => {
+const styles = () => ({
+  circleButton: {
+    maxWidth: 35,
+    maxHeight: 35,
+    minHeight: 35
+  },
+  botPadding: {
+    paddingBottom: 10
+  }
+});
+
+const MonthChanger = ({ classes }) => {
   const dispatch = useDispatch();
   const calendarMonth = useSelector(state => state.currentDates.calendarMonth);
 
@@ -21,22 +36,42 @@ const MonthChanger = () => {
   };
 
   return (
-    <div className="header row flex-middle">
-      <div className="column col-start">
-        <div className="icon" onClick={prevMonth}>
-          chevron_left
-        </div>
+    <MuiThemeProvider>
+      <div className={classes.botPadding}>
+        <Grid container justify="center" alignItems="center">
+          <Grid
+            container
+            item
+            xs={6}
+            md={4}
+            lg={4}
+            justify="space-between"
+            alignItems="center"
+          >
+            <Fab
+              color="primary"
+              aria-label="left-month"
+              className={classes.circleButton}
+              onClick={prevMonth}
+            >
+              <ChevronLeft />
+            </Fab>
+            <Typography variant="h6">
+              {moment(calendarMonth).format("MMMM YYYY")}
+            </Typography>
+            <Fab
+              color="primary"
+              aria-label="left-month"
+              className={classes.circleButton}
+              onClick={nextMonth}
+            >
+              <ChevronRight />
+            </Fab>
+          </Grid>
+        </Grid>
       </div>
-      <div className="column col-center">
-        <span>{moment(calendarMonth).format("MMMM YYYY")}</span>
-      </div>
-      <div className="column col-end">
-        <div className="icon" onClick={nextMonth}>
-          chevron_right
-        </div>
-      </div>
-    </div>
+    </MuiThemeProvider>
   );
 };
 
-export default MonthChanger;
+export default withStyles(styles)(MonthChanger);

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import Paper from "@material-ui/core/Paper";
 import DayBar from "../DayBar";
 import MonthChanger from "../MonthChanger";
 import CalendarCell from "../CalendarCell";
 import "./Calendar.css";
 
 const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState(moment().format());
-
   const calendarMonth = useSelector(state => state.currentDates.calendarMonth);
 
   const renderCells = () => {
@@ -43,15 +42,16 @@ const Calendar = () => {
     return <div className="body">{rows}</div>;
   };
 
-  const onDateClick = day => {
-    setSelectedDate(day);
-  };
   return (
-    <div className="calendar">
+    <>
       <MonthChanger />
-      <DayBar />
-      <div>{renderCells()}</div>
-    </div>
+      <Paper>
+        <div className="calendar">
+          <DayBar />
+          <div>{renderCells()}</div>
+        </div>
+      </Paper>
+    </>
   );
 };
 export default Calendar;

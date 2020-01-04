@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Calendar from "./Calendar/Calendar";
+import CalendarView from "./CalendarView";
 
 function App() {
   return (
-    <div className="App">
-      <Calendar />
+    <div className="viewContainer">
+      <CalendarView />
     </div>
   );
 }
