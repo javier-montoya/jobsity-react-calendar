@@ -7,18 +7,29 @@
   border-bottom: 1px solid darkgray;
 }
 
-/* .number {
-  font-size: 82.5%;
-  line-height: 1;
-  top: 0.75em;
-  left: 0.75em;
-  font-weight: 700;
-} */
-
-.inCurrentMonth {
-  background: white;
+.cell:hover {
+  background-color: #dbdbdb;
 }
 
-.outCurrentMont {
-  background: #f2f2f2;
+.weekend-cell {
+  background-color: #f2f2f2;
+}
+
+.number {
+  font-size: 0.875rem;
+  font-weight: 650;
+  padding-left: 8px;
+}
+
+.number.out-month {
+  color: #a8a8a8;
+}
+
+:not(.out-month).number.weekend-number {
+  color: #2f74b5;
+}
+
+.today {
+  border-radius: 15px;
+  border: 2px solid #2fb5ac;
 }

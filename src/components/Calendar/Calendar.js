@@ -4,7 +4,6 @@ import moment from "moment";
 import { Paper, Grid } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import DayBar from "../DayBar";
-import MonthChanger from "../MonthChanger";
 import CalendarCell from "../CalendarCell";
 
 const Calendar = ({ classes }) => {
@@ -27,7 +26,7 @@ const Calendar = ({ classes }) => {
           <CalendarCell
             key={day.format()}
             dateString={day.format()}
-            inCurrentMonth={!day.isSame(monthStart, "month")}
+            inCurrentMonth={day.isSame(monthStart, "month")}
           />
         );
         day.add(1, "days");
@@ -48,13 +47,10 @@ const Calendar = ({ classes }) => {
   };
 
   return (
-    <>
-      <MonthChanger />
-      <Paper>
-        <DayBar />
-        {renderCells()}
-      </Paper>
-    </>
+    <Paper>
+      <DayBar />
+      {renderCells()}
+    </Paper>
   );
 };
 
