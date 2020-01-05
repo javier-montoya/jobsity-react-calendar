@@ -1,7 +1,7 @@
 .cell {
   position: relative;
   height: 6.5em;
-  overflow: hidden;
+  overflow: scroll;
   cursor: pointer;
   border-right: 1px solid darkgray;
   border-bottom: 1px solid darkgray;

@@ -39,7 +39,7 @@ const ReminderDialog = () => {
 
   const dialogTitle = selectedReminder ? "Update Reminder" : "Add Reminder";
 
-  const useStyles = makeStyles(() => ({
+  const dynamicStyles = makeStyles(() => ({
     currentColor: {
       backgroundColor: selectedColor,
       color: "white"
@@ -49,7 +49,7 @@ const ReminderDialog = () => {
     }
   }));
 
-  const classes = useStyles();
+  const classes = dynamicStyles();
 
   const handleClose = () => {
     setErrors({});
@@ -65,14 +65,12 @@ const ReminderDialog = () => {
     setErrors({});
     if (!validateForm()) return;
 
-    // dispatch it
-    // date, time, text, color, city
     const reminder = {
       date: selectedDate,
       time: selectedTime,
-      selectedText,
-      selectedColor,
-      selectedCity
+      text: selectedText,
+      color: selectedColor,
+      city: selectedCity
     };
 
     dispatch(createReminder(reminder));
@@ -129,7 +127,6 @@ const ReminderDialog = () => {
               <DatePicker
                 showTimeSelect
                 showTimeSelectOnly
-                timeFormat="h:mm a"
                 timeIntervals={5}
                 timeInputLabel="Time:"
                 selected={selectedTime}
@@ -178,7 +175,6 @@ const ReminderDialog = () => {
               <CompactPicker
                 color={selectedColor}
                 onChange={color => {
-                  console.log("color: ", color.hex);
                   setSelectedColor(color.hex);
                   setShowColorPicker(false);
                 }}

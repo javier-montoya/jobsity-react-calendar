@@ -4,10 +4,9 @@ import Types from "../actions/types";
 const { CREATE_REMINDER } = Types;
 
 export const createReminder = reminder => dispatch => {
-  // date, time, text, color, city
   let newReminder = reminder;
-  newReminder.date = moment(reminder.date).format("MM/DD/YY");
-  newReminder.date = moment(reminder.time).format("h:mm a");
+  newReminder.date = moment(reminder.date).format();
+  newReminder.time = moment(reminder.time).format();
   newReminder.id = uuid();
 
   return dispatch({
