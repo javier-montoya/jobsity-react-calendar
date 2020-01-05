@@ -142,7 +142,7 @@ const ReminderDialog = () => {
                 id="reminder-text"
                 value={selectedText}
                 onChange={e => {
-                  setSelectedText(e.target.value);
+                  setSelectedText(e.target.value.slice(0, 30));
                 }}
                 error={currentErrors.text}
                 helperText={currentErrors.text}
