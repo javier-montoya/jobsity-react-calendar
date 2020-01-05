@@ -16,9 +16,9 @@ import {
   DialogActions
 } from "@material-ui/core";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
 import { closeReminderDialog } from "../../actions/reminderDialogActions";
+import { createReminder } from "../../actions/reminderActions";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ReminderDialog = () => {
   const dispatch = useDispatch();
@@ -66,6 +66,17 @@ const ReminderDialog = () => {
     if (!validateForm()) return;
 
     // dispatch it
+    // date, time, text, color, city
+    const reminder = {
+      date: selectedDate,
+      time: selectedTime,
+      selectedText,
+      selectedColor,
+      selectedCity
+    };
+
+    dispatch(createReminder(reminder));
+    handleClose();
   };
 
   const validateForm = () => {
@@ -87,6 +98,7 @@ const ReminderDialog = () => {
       }
     }
     setErrors(errors);
+    return isValid;
   };
 
   return (
@@ -144,7 +156,7 @@ const ReminderDialog = () => {
                 onChange={e => {
                   setSelectedText(e.target.value.slice(0, 30));
                 }}
-                error={currentErrors.text}
+                error={!!currentErrors.text}
                 helperText={currentErrors.text}
               />
             </Grid>
@@ -186,7 +198,7 @@ const ReminderDialog = () => {
                   onChange={e => {
                     setSelectedCity(e.target.value);
                   }}
-                  error={currentErrors.city}
+                  error={!!currentErrors.city}
                   helperText={currentErrors.city}
                 />
               </Grid>
