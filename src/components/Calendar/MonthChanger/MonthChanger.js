@@ -30,7 +30,7 @@ const MonthChanger = ({ classes }) => {
         <Grid
           container
           item
-          xs={6}
+          xs={8}
           md={4}
           lg={4}
           justify="space-between"
