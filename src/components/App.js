@@ -1,19 +1,15 @@
 import React from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CalendarView from "./CalendarView";
-import theme from "../themes";
 import ReminderDialog from "./ReminderDialog";
+import CalendarView from "./CalendarView";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <div className="viewContainer body">
       <ReminderDialog />
-      <div className="viewContainer body">
-        <CalendarView />
-      </div>
-    </ThemeProvider>
+      <CalendarView />
+    </div>
   );
-}
+};
 
 export default App;

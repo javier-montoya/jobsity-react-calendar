@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@material-ui/core/styles";
 import App from "./components/App";
-// import * as serviceWorker from "./serviceWorker";
 import store from "./store";
+import theme from "./themes";
 import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById("root")
 );
-
-// serviceWorker.unregister();
