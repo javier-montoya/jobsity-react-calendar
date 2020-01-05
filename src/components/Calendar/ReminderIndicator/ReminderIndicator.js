@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
+import { setCurrentReminder } from "../../../actions/currentReminderActions";
 
 const ReminderIndicator = ({ reminder }) => {
   const dynamicStyles = makeStyles(() => ({
@@ -22,11 +24,16 @@ const ReminderIndicator = ({ reminder }) => {
     }
   }));
 
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(setCurrentReminder(reminder));
+  };
+
   const classes = dynamicStyles();
   const formattedTime = moment(reminder.time).format("H:mm");
 
   return (
-    <Button className={classes.circleButton}>
+    <Button className={classes.circleButton} onClick={handleClick}>
       <Grid container justify="space-between" alignItems="center">
         <Grid item xs={3} className={classes.gridItem}>
           <Typography noWrap variant="caption">

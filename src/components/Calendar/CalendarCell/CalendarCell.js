@@ -37,10 +37,7 @@ const CalendarCell = ({ dateString, inCurrentMonth }) => {
   };
 
   return (
-    <div
-      className={`full-width cell ${isWeekend && "weekend-cell"}`}
-      onClick={() => console.log("date clicked: ", dateString)}
-    >
+    <div className={`full-width cell ${isWeekend && "weekend-cell"}`}>
       <Grid container direction="column" justify="center">
         <Grid container justify="space-between">
           {renderCalendarNumber()}
