@@ -1,12 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { Grid } from "@material-ui/core";
-import withStyles from "@material-ui/core/styles/withStyles";
-import ReminderIndicator from "./ReminderIndicator";
+import ReminderIndicator from "../ReminderIndicator";
 import "./CalendarCell.css";
 
-const CalendarCell = ({ classes, dateString, inCurrentMonth }) => {
+const CalendarCell = ({ dateString, inCurrentMonth }) => {
   const cellDate = moment(dateString);
   const isToday = cellDate.isSame(moment(), "day");
   const isWeekend = cellDate.day() === 0 || cellDate.day() === 6;
@@ -51,6 +51,9 @@ const CalendarCell = ({ classes, dateString, inCurrentMonth }) => {
   );
 };
 
-const styles = () => ({});
+CalendarCell.propTypes = {
+  dateString: PropTypes.string.isRequired,
+  inCurrentMonth: PropTypes.bool.isRequired
+};
 
-export default withStyles(styles)(CalendarCell);
+export default CalendarCell;

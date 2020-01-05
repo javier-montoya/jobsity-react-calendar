@@ -2,8 +2,7 @@ import Types from "../actions/types";
 const { OPEN_REMINDER_DIALOG, CLOSE_REMINDER_DIALOG } = Types;
 
 const initialState = {
-  open: false,
-  selectedReminder: null
+  open: false
 };
 
 export default (state = initialState, action) => {
@@ -11,14 +10,12 @@ export default (state = initialState, action) => {
     case OPEN_REMINDER_DIALOG:
       return {
         ...state,
-        open: true,
-        selectedReminder: action.payload.selectedReminder
+        open: true
       };
     case CLOSE_REMINDER_DIALOG:
       return {
         ...state,
-        open: false,
-        selectedReminder: null
+        open: false
       };
     default:
       return state;

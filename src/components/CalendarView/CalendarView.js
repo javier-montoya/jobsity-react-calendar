@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { Grid, Fab } from "@material-ui/core";
 import withStyles from "@material-ui/styles/withStyles";
@@ -36,6 +37,10 @@ const CalendarView = ({ classes }) => {
       </Grid>
     </Grid>
   );
+};
+
+CalendarView.propTypes = {
+  classes: PropTypes.object
 };
 
 const styles = () => ({

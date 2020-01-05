@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Typography, Fab } from "@material-ui/core";
@@ -59,6 +60,10 @@ const MonthChanger = ({ classes }) => {
       </Grid>
     </div>
   );
+};
+
+MonthChanger.propTypes = {
+  classes: PropTypes.object
 };
 
 const styles = () => ({

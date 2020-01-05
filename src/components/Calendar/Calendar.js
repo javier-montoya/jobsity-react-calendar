@@ -1,5 +1,5 @@
-import "moment";
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import moment from "moment";
 import { Paper, Grid } from "@material-ui/core";
@@ -57,6 +57,10 @@ const Calendar = ({ classes }) => {
       </Paper>
     </>
   );
+};
+
+Calendar.propTypes = {
+  classes: PropTypes.object
 };
 
 const styles = () => ({

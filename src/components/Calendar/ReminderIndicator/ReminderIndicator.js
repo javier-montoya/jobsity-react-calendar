@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -40,6 +41,10 @@ const ReminderIndicator = ({ reminder }) => {
       </Grid>
     </Button>
   );
+};
+
+ReminderIndicator.propTypes = {
+  reminder: PropTypes.object.isRequired
 };
 
 export default ReminderIndicator;
