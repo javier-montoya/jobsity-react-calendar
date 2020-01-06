@@ -4,11 +4,11 @@ const { CREATE_REMINDER, DELETE_REMINDER, UPDATE_REMINDER } = Types;
 const initialState = {
   reminders: [
     {
-      date: "2020-01-05T14:33:04-06:00",
-      time: "2020-01-05T14:33:04-06:00",
+      date: "2020-01-08T14:33:04-06:00",
+      time: "2020-01-08T14:33:04-06:00",
       text: "some lorem impsum placeholder text",
       color: "#b52f2f",
-      city: "aaaa",
+      city: "London",
       id: "1d4dcd6-c6d-2a8a-ef8-6e06edf21eb6"
     }
   ]

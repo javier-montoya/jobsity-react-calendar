@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import uuid from "react-uuid";
-import { useSelector } from "react-redux";
 import { CompactPicker } from "react-color";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {
