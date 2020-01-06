@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { Grid, Fab } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import withStyles from "@material-ui/styles/withStyles";
 import AddIcon from "@material-ui/icons/Add";
 import Calendar from "../Calendar";
@@ -12,8 +12,8 @@ const CalendarView = ({ classes }) => {
 
   const renderAddButton = () => {
     return (
-      <Fab
-        variant="extended"
+      <Button
+        variant="contained"
         color="primary"
         onClick={() => {
           dispatch(openReminderDialog());
@@ -21,7 +21,7 @@ const CalendarView = ({ classes }) => {
       >
         <AddIcon />
         Add Reminder
-      </Fab>
+      </Button>
     );
   };
 

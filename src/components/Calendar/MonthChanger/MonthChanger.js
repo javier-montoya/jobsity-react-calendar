@@ -40,7 +40,6 @@ const MonthChanger = ({ classes }) => {
           <Fab
             color="primary"
             aria-label="left-month"
-            className={classes.circleButton}
             onClick={prevMonth}
           >
             <ChevronLeft />
@@ -51,7 +50,6 @@ const MonthChanger = ({ classes }) => {
           <Fab
             color="primary"
             aria-label="left-month"
-            className={classes.circleButton}
             onClick={nextMonth}
           >
             <ChevronRight />
@@ -67,11 +65,6 @@ MonthChanger.propTypes = {
 };
 
 const styles = () => ({
-  circleButton: {
-    maxWidth: 35,
-    maxHeight: 35,
-    minHeight: 35
-  },
   botPadding: {
     paddingBottom: 28
   }
