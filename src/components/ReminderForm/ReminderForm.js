@@ -74,16 +74,6 @@ const ReminderForm = ({
     return isValid;
   };
 
-  // const resetDefaults = () => {
-  //   setErrors({});
-  //   setSelectedText(reminder ? reminder.text : "");
-  //   setSelectedCity(reminder ? reminder.city : "");
-  //   setSelectedCity(reminder ? reminder.color : defaultColor);
-  //   setSelectedDate(reminder ? new Date(reminder.date) : new Date());
-  //   setSelectedTime(reminder ? new Date(reminder.time) : new Date());
-  //   setShowColorPicker(false);
-  // };
-
   const handleSave = () => {
     setErrors({});
     if (!validateForm()) return;
@@ -198,7 +188,7 @@ const ReminderForm = ({
 
       <Grid container justify="flex-end">
         <Grid item>
-          <Button onClick={handleSave}>{submitButtonText}</Button>
+          <Button id={"submit-button"} onClick={handleSave}>{submitButtonText}</Button>
         </Grid>
       </Grid>
     </Grid>

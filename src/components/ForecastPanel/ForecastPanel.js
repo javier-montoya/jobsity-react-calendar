@@ -9,10 +9,9 @@ import withStyles from "@material-ui/styles/withStyles";
 import { fetchForecast } from "../../actions/forecastActions";
 
 const ForecastPanel = ({ classes }) => {
-  const dispatch = useDispatch();
   const currentReminder = useSelector(state => state.currentReminder.reminder);
   const forecasts = useSelector(state => state.forecasts);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchForecast(currentReminder.city, currentReminder.date));
   }, [currentReminder.date, currentReminder.city]);
