@@ -196,7 +196,7 @@ const ReminderForm = ({
 };
 
 ReminderForm.propTypes = {
-  submitCallback: PropTypes.func.isRequired,
+  submitCallback: PropTypes.func,
   submitButtonText: PropTypes.string,
   reminder: PropTypes.object
 };
