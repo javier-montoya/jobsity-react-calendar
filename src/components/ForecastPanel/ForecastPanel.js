@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import withStyles from "@material-ui/styles/withStyles";
@@ -14,32 +15,39 @@ const ForecastPanel = ({ classes }) => {
 
   useEffect(() => {
     dispatch(fetchForecast(currentReminder.city, currentReminder.date));
-  }, []);
+  }, [currentReminder.date, currentReminder.city]);
 
   if (forecasts.fetching) return <CircularProgress />;
 
   if (forecasts.errorMessage)
     return <Typography>{forecasts.errorMessage}</Typography>;
 
+  if (forecasts.forecastResults.length === 0)
+    return (
+      <Typography variant="subtitle1">
+        No forecasts found for this date
+      </Typography>
+    );
+
   const renderForecasts = () => {
-    return forecasts.forecastResults.map(forecast => {
+    return forecasts.forecastResults.map((forecast, index) => {
       return (
-        <Grid item xs={6} md={4} lg={2}>
+        <Grid item xs={4} md={3} lg={2} key={`forecast-${index}`}>
           <Grid
             container
             direction="column"
             justify="center"
-            aligntItems="center"
+            alignItems="center"
           >
-            <Typography variant="body2">
-              {moment(forecast.dt_txt).format("hh:mm a")}
-            </Typography>
             <img
               className={classes.weatherIcon}
               src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`}
               alt="Weather icon"
             />
             <Typography variant="body2">{forecast.weather[0].main}</Typography>
+            <Typography variant="body2">
+              {moment(forecast.dt_txt).format("hh:mm a")}
+            </Typography>
           </Grid>
         </Grid>
       );

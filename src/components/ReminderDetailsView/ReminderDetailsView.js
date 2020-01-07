@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -70,7 +71,9 @@ const ReminderDetails = () => {
         />
       </Grid>
       <Grid item xs={12} md={9} lg={6}>
-        <ForecastPanel />
+        <Paper>
+          <ForecastPanel />
+        </Paper>
       </Grid>
     </Grid>
   );

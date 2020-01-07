@@ -11,7 +11,8 @@ import { setCurrentReminder } from "../../../actions/currentReminderActions";
 const ReminderIndicator = ({ reminder }) => {
   const dynamicStyles = makeStyles(() => ({
     circleButton: {
-      width: "100%",
+      minWidth: "100%",
+      maxWidth: "100%",
       height: "20px",
       boxShadow: "none",
       padding: "0px 2px",

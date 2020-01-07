@@ -13,7 +13,6 @@ export const createReminder = reminder => dispatch => {
 };
 
 export const updateReminder = reminder => dispatch => {
-  console.log("reminder: ", reminder);
   let newReminder = reminder;
   newReminder.date = moment(reminder.date).format();
   newReminder.time = moment(reminder.time).format();

@@ -38,7 +38,7 @@ const CalendarCell = ({ dateString, inCurrentMonth }) => {
 
   return (
     <div className={`full-width cell ${isWeekend && "weekend-cell"}`}>
-      <Grid container direction="column" justify="center">
+      <Grid container className={"custom"} direction="column" justify="center" item>
         <Grid container justify="space-between">
           {renderCalendarNumber()}
           {renderReminders()}

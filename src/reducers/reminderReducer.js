@@ -6,7 +6,7 @@ const initialState = {
     {
       date: "2020-01-08T14:33:04-06:00",
       time: "2020-01-08T14:33:04-06:00",
-      text: "some lorem impsum placeholder text",
+      text: "lorem impsum thats really long",
       color: "#b52f2f",
       city: "London",
       id: "1d4dcd6-c6d-2a8a-ef8-6e06edf21eb6"
