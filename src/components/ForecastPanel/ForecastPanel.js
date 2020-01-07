@@ -54,12 +54,14 @@ const ForecastPanel = ({ classes }) => {
     });
   };
   return (
-    <Grid container justify="center">
-      <Grid container item xs={12} justify="center">
-        <Typography variant="h6"> Forecasts for the day: </Typography>
+    <Paper>
+      <Grid container justify="center">
+        <Grid container item xs={12} justify="center">
+          <Typography variant="h6"> Forecasts for the day: </Typography>
+        </Grid>
+        {renderForecasts()}
       </Grid>
-      {renderForecasts()}
-    </Grid>
+    </Paper>
   );
 };
 

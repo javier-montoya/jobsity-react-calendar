@@ -12,11 +12,6 @@ export default createMuiTheme({
         marginBottom: "16px"
       }
     },
-    MuiButton: {
-      root: {
-        minWidth: "150px"
-      }
-    },
     MuiFab: {
       root: {
         maxWidth: "40px",
