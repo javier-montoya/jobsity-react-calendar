@@ -13,6 +13,7 @@ Calendar application built entirely using React Hooks. The calendar itself was m
 
 ## Running it
 Go to the root directory of this project and install packages with ```npm install```
+
 Running  ``` npm run start``` kicks off the project
 
 ## Tests
