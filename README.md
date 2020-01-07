@@ -1,15 +1,15 @@
 # jobsity-react-calendar
 
-Calendar application built entirely using React Hooks.
+Calendar application built entirely using React Hooks. The calendar itself was made from scratch.
 
 ## Tools Used
-- **React** was the framework used, as well as its **React Hooks**
-- **Redux** for stage management
-- Notorious middlewares such as **redux-thunk** and **redux-promise**
-- Testing was done with **Jest** and **Enzyme**
-- Styling done with **Material UI** and **CSS**
-- Time parsing using **moment**
-- Some other ui components such as **react-datepicker**
+- [React](https://reactjs.org/) was the framework used, as well as its [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Redux](https://redux.js.org/) for stage management
+- Notorious middlewares such as [redux-thunk](https://www.npmjs.com/package/redux-thunk) and [redux-promise](https://www.npmjs.com/package/redux-promise)
+- Testing was done with [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/docs/guides/jest.html)
+- Styling done with [Material UI](https://material-ui.com/) and **CSS**
+- Time parsing using [moment](https://www.npmjs.com/package/moment)
+- Some other ui components such as [react-datepicker](https://reactdatepicker.com/)
 
 ## Running it
 Go to the root directory of this project and install packages with ```npm install```
