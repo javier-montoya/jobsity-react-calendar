@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import Grid from "@material-ui/core/Grid";
@@ -8,11 +8,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import BackIcon from "@material-ui/icons/ArrowBack";
 import ReminderForm from "../ReminderForm";
 import ForecastPanel from "../ForecastPanel";
-import {
-  removeCurrentReminder,
-  setCurrentReminder
-} from "../../actions/currentReminderActions";
+import ConfirmationDialog from "../ConfirmationDialog";
 import { deleteReminder, updateReminder } from "../../actions/reminderActions";
+  import {
+    removeCurrentReminder,
+    setCurrentReminder
+  } from "../../actions/currentReminderActions";
 
 const ReminderDetails = () => {
   const dispatch = useDispatch();
@@ -24,55 +25,70 @@ const ReminderDetails = () => {
     dispatch(setCurrentReminder(reminder));
   };
 
+  const [dialogState, setDialogState] = useState(false);
+  const confirmDelete = () => {
+    dispatch(deleteReminder(currentReminder.id));
+    dispatch(removeCurrentReminder());
+    setDialogState(false);
+  };
+
   return (
-    <Grid
-      container
-      spacing={8}
-      direction="column"
-      justify="center"
-      alignItems="center"
-    >
+    <>
+      <ConfirmationDialog
+        open={dialogState}
+        handleClose={() => {
+          setDialogState(false);
+        }}
+        handleConfirm={confirmDelete}
+        dialogText="Are you sure you want to delete this reminder?"
+      />
+
       <Grid
         container
-        item
-        xs={12}
-        md={9}
-        lg={6}
-        direction="row"
-        justify="space-evenly"
+        spacing={8}
+        direction="column"
+        justify="center"
+        alignItems="center"
       >
-        <Fab
-          color="primary"
-          aria-label="back"
-          onClick={() => {
-            dispatch(removeCurrentReminder());
-          }}
+        <Grid
+          container
+          item
+          xs={12}
+          md={9}
+          lg={6}
+          direction="row"
+          justify="space-evenly"
         >
-          <BackIcon />
-        </Fab>
-        <Typography variant="h6">{`${prettyDate}, reminder at ${prettyTime}`}</Typography>
-        <Fab
-          color="secondary"
-          aria-label="back"
-          onClick={() => {
-            dispatch(deleteReminder(currentReminder.id));
-            dispatch(removeCurrentReminder());
-          }}
-        >
-          <DeleteIcon />
-        </Fab>
+          <Fab
+            color="primary"
+            aria-label="back"
+            onClick={() => {
+              dispatch(removeCurrentReminder());
+            }}
+          >
+            <BackIcon />
+          </Fab>
+          <Typography variant="h6">{`${prettyDate}, reminder at ${prettyTime}`}</Typography>
+          <Fab
+            color="secondary"
+            aria-label="back"
+            onClick={() => setDialogState(true)}
+          >
+            <DeleteIcon />
+          </Fab>
+        </Grid>
+        <Grid item xs={12} md={9} lg={6}>
+          <ReminderForm
+            submitButtonText="Update"
+            submitCallback={onSubmit}
+            reminder={currentReminder}
+          />
+        </Grid>
+        <Grid item xs={12} md={9} lg={6}>
+          <ForecastPanel />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={9} lg={6}>
-        <ReminderForm
-          submitButtonText="Update"
-          submitCallback={onSubmit}
-          reminder={currentReminder}
-        />
-      </Grid>
-      <Grid item xs={12} md={9} lg={6}>
-        <ForecastPanel />
-      </Grid>
-    </Grid>
+    </>
   );
 };
 
